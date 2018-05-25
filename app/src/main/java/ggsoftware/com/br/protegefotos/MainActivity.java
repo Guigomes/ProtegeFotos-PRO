@@ -28,12 +28,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Toast.makeText(getApplicationContext(), "MAIN", Toast.LENGTH_SHORT).show();
         PastaDAO pastaDAO = new PastaDAO(MainActivity.this);
 
         List<PastaVO> listaPastas = pastaDAO.listarPastas(false);
 
         ImageDAO imagemDAO = new ImageDAO(MainActivity.this);
-
 
 //        setContentView(R.layout.activity_main);
 
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(it, CRIAR_NOVA_SENHA);
         }else{
             startActivity(new Intent(MainActivity.this, EscolherPastaActivity.class));
-        //    finish();
+           finish();
         }
 
 
@@ -69,8 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
                 PastaDAO pastaDAO = new PastaDAO(MainActivity.this);
 
+                boolean pastaVisivel = true;
 
-                boolean sucesso = pastaDAO.salvarPasta(nomePasta, pattern, SampleSetPatternActivity.isPastaVisivel);
+                boolean sucesso = pastaDAO.salvarPasta(nomePasta, pattern, pastaVisivel);
 
                 if (sucesso) {
                     Toast.makeText(MainActivity.this, getString(R.string.msg_sucesso_criar_pasta), Toast.LENGTH_SHORT).show();

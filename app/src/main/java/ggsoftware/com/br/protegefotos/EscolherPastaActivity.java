@@ -36,68 +36,28 @@ public class EscolherPastaActivity extends AppCompatActivity {
     PastaDAO pastaDAO;
 
     @Override
+    public void onBackPressed() {
+
+
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escolher_pasta);
-
-   //     SampleSetPatternActivity.isPastaVisivel = true;
         final List<String> nomePastas;
 
 
+        Toast.makeText(getApplicationContext(), "onCreate ESCOLHER CHAMADO", Toast.LENGTH_SHORT).show();
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-/*
-                AlertDialog.Builder builder = new AlertDialog.Builder(EscolherPastaActivity.this);
-                builder.setTitle(getString(R.string.txt_informe_nome_pasta));
 
-
-                final EditText input = new EditText(EscolherPastaActivity.this);
-
-                input.setInputType(InputType.TYPE_CLASS_TEXT);
-
-
-                input.setTextColor(Color.BLACK);
-                final CharSequence[] items = { " HDMI IN ", " AV IN" };
-
-                final int inputSelection = 0;
-                builder.setSingleChoiceItems(items,0,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int item) {
-
-
-                            }
-                        });
-                builder.setView(input);
-
-                builder.setPositiveButton(getString(R.string.btn_criar_pasta), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        m_Text = input.getText().toString();
-
-                        Intent it = new Intent(EscolherPastaActivity.this, SampleSetPatternActivity.class);
-
-                        it.putExtra("idPasta", -1);
-                        it.putExtra("nomePasta", m_Text);
-                        startActivityForResult(it, MainActivity.CRIAR_NOVA_SENHA);
-                    }
-                });
-
-                builder.setNegativeButton(getString(R.string.btn_cancelar), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                builder.show();
-*/
-                /*
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
                 final AlertDialog dialog;
 
                 final View alertDialogView = LayoutInflater.from(EscolherPastaActivity.this).inflate
@@ -247,7 +207,7 @@ public class EscolherPastaActivity extends AppCompatActivity {
 
 
             Intent it = new Intent(EscolherPastaActivity.this, GlideActivity.class);
-            finish();
+//            finish();
 
 
             startActivity(it);

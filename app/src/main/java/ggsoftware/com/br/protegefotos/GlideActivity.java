@@ -64,9 +64,24 @@ public class GlideActivity extends AppCompatActivity {
     PastaDAO pastaDAO;
 
     @Override
+    public void onBackPressed() {
+      //  super.onBackPressed();
+
+        setResult(123, new Intent());
+        finish();//finishing activity
+        // finish();
+
+      //  Intent it = new Intent(GlideActivity.this, EscolherPastaActivity.class);
+//        startActivity(it);
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_glide);
+
+        Toast.makeText(getApplicationContext(), "OnCreate CHAMADO", Toast.LENGTH_LONG).show();
 
         List<SpacePhoto> mSpacePhotos = new ArrayList<>();
         pastaDAO = new PastaDAO(GlideActivity.this);
@@ -392,21 +407,6 @@ compartilharImagem();
         return true;
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-/*
-        if (MainActivity.isModoInvisivel()) {
-            Intent it = new Intent(GlideActivity.this, SampleConfirmPatternActivity.class);
-            startActivity(it);
-        } else {
-            Intent it = new Intent(GlideActivity.this, EscolherPastaActivity.class);
-            startActivity(it);
-            finish();
-
-
-        }*/
-    }
 
     @Override
     public MenuInflater getMenuInflater() {
